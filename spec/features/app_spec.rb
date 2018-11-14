@@ -1,6 +1,6 @@
 feature "homepage" do
-  scenario "it displays a message" do
+  scenario "ask the user to provide their name" do
     visit '/'
-    expect(page).to have_content "Hello app"
+    expect(page).to have_content "What is your name?"
   end
 end
