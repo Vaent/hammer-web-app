@@ -1,8 +1,12 @@
 feature "use the name provided" do
   scenario "display a message with the name" do
-    visit '/'
-    fill_in 'name', with: "My name"
-    click_button "Go!"
-    expect(page).to have_content "Hello My name"
+    enter_name
+    expect(page).to have_content "My name"
+  end
+
+  scenario "include an animated gif" do
+    enter_name
+    gif_ref = "//img[contains(@src, 'animated-hammer-image-0014.gif')]"
+    expect(page).to have_xpath gif_ref
   end
 end

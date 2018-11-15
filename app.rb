@@ -6,6 +6,12 @@ class App < Sinatra::Base
   end
 
   post '/stop' do
-    "Hello #{params[:name]}"
+    $name = params[:name]
+    redirect '/hammer'
+  end
+
+  get '/hammer' do
+    @name = $name
+    erb(:hammer)
   end
 end
