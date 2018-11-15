@@ -1,17 +1,19 @@
 require 'sinatra/base'
 
 class App < Sinatra::Base
+  enable :sessions
+
   get '/' do
     erb(:get_name)
   end
 
   post '/stop' do
-    $name = params[:name]
+    session[:name] = (params[:name] == "" ? "Nails" : params[:name])
     redirect '/hammer'
   end
 
   get '/hammer' do
-    @name = $name
+    @name = session[:name]
     erb(:hammer)
   end
 end
